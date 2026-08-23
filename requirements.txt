@@ -1,0 +1,47 @@
+# Core data analysis
+numpy
+pandas
+scipy
+pyarrow
+
+# Visualisation
+matplotlib
+seaborn
+wordcloud
+
+# Jupyter
+jupyter
+ipykernel
+
+# Web / data collection
+requests
+beautifulsoup4
+
+# Classical machine learning / NLP
+scikit-learn
+nltk
+spacy
+gensim
+
+# Text cleaning / utilities
+regex
+emoji
+ftfy
+tqdm
+
+# Deep learning / transformer NLP
+torch
+transformers
+datasets
+accelerate
+
+# Embeddings / semantic similarity
+sentence-transformers
+
+# Topic modelling / clustering
+bertopic
+umap-learn
+hdbscan
+
+# LLM APIs
+openai

@@ -20,3 +20,9 @@ Thumbs.db
 # Data files
 data/*
 !data/.gitkeep
+
+
+# Virtual environments
+.venv/
+venv/
+.venv_social_post_analysis/
