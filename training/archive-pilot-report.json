@@ -1,0 +1,97 @@
+{
+  "report": {
+    "validation_loss_before": 1.5675076127347745,
+    "validation_loss_after": 1.3707492935760905,
+    "training_step_losses": [
+      1.4050406739115715,
+      1.63656884431839,
+      1.5935744792222977,
+      1.4705633074045181,
+      1.3254487365484238,
+      1.4374867379665375,
+      1.5840918347239494,
+      1.3562014251947403,
+      1.3186484575271606,
+      1.643386960029602,
+      1.3427240401506424,
+      1.1578535586595535,
+      1.5335731208324432,
+      1.4259780868887901,
+      1.2003946788609028,
+      1.1575164198875427,
+      1.2954246811568737,
+      1.1341526955366135,
+      1.4457670599222183,
+      1.1246458292007446,
+      1.3416395261883736
+    ],
+    "optimizer_steps": 21,
+    "trainable_parameters": 417792,
+    "peak_reserved_bytes": 8269070336,
+    "note": "One epoch; validation loss is not meaning preservation or style quality. Test split untouched by optimization and evaluation.",
+    "elapsed_seconds": 372.33,
+    "complete": true
+  },
+  "diagnostics": {
+    "before": {
+      "outputs": 150,
+      "identical_at_all_five_levels": 7,
+      "insensitive_cases": [
+        "team_praise",
+        "policy_democrats",
+        "political_praise",
+        "possible_launch",
+        "negation",
+        "no_layoffs",
+        "sympathy"
+      ],
+      "average_distinct_outputs_per_case": 2.433333333333333,
+      "exact_input_copies": 13,
+      "length_limited": 1
+    },
+    "after": {
+      "outputs": 150,
+      "identical_at_all_five_levels": 27,
+      "insensitive_cases": [
+        "team_praise",
+        "volunteers",
+        "small_success",
+        "mixed_review",
+        "late_delivery",
+        "policy_democrats",
+        "policy_republicans",
+        "political_praise",
+        "forecast",
+        "hope",
+        "conditional",
+        "negation",
+        "no_layoffs",
+        "not_all",
+        "budget",
+        "payment",
+        "names",
+        "attribution",
+        "planned_work",
+        "past_future",
+        "ordinary_request",
+        "apology",
+        "sympathy",
+        "already_emphatic",
+        "nickname",
+        "quoted_data",
+        "question"
+      ],
+      "average_distinct_outputs_per_case": 1.1,
+      "exact_input_copies": 114,
+      "length_limited": 0
+    },
+    "validation_loss_relative_reduction": 0.1255230389697481,
+    "limitations": "Exact textual differences measure responsiveness, not stylistic quality. Identical output can be appropriate for some inputs. One deterministic generation per condition."
+  },
+  "reload": {
+    "passed": true,
+    "case": "forecast",
+    "level": 100,
+    "output": "Sales could rise by 8% next quarter, but this is only an estimate."
+  }
+}

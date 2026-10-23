@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Training pair review</title><link rel="stylesheet" href="/static/style.css"></head><body><main><a href="/">← Back to the slider</a><h1>From archive to training pairs.</h1><p>Reviewed for meaning and style by Codex. Only accepted, unchanged pairs enter the training exports. This is not a fact-check or proof of personal authorship. An experimental 2B training pilot has run; the live slider still uses the original model. The 0 / 50 / 100 labels are editorial targets, not measured style scores. Neutral and partial versions began as model drafts and may have been corrected.</p><p id="count">Loading…</p><label for="filter">Show pairs</label><select id="filter"><option value="all">All decisions</option><option value="accepted">Accepted for export</option><option value="excluded">Excluded</option><option value="pending">Needs review</option></select><div id="pairs"></div></main><script>
+let records=[];
+function render(){
+ const list=document.getElementById('pairs');list.replaceChildren();const filter=document.getElementById('filter').value;
+ for(const p of records){
+ const accepted=p.export_eligible;const status=accepted?'Accepted':p.review_status==='excluded'?'Excluded':'Needs review';
+ if(filter==='accepted'&&!accepted||filter==='excluded'&&status!=='Excluded'||filter==='pending'&&status!=='Needs review')continue;
+ const article=document.createElement('section');article.className='panel archive';const title=document.createElement('h2');title.textContent=p.source.category+' / '+p.source.split+' / '+status;article.append(title);
+ for(const [label,text] of [['Original archive excerpt: target 100',p.source.text],['Neutral: target 0',p.neutral],['Partial style: target 50',p.medium]]){const h=document.createElement('h3');h.textContent=label;const t=document.createElement('p');t.textContent=text;article.append(h,t)}
+ const note=document.createElement('p');note.className='note';note.textContent='Review: '+(p.agent_review_note||'Not reviewed.')+' | Automatic cues: '+Object.entries(p.review_flags).map(([k,v])=>k+': '+(v.join(' ')||'none detected')).join(' | ');
+ const link=document.createElement('a');link.textContent='Original source';if(/^https:\/\/(truthsocial\.com|trumpstruth\.org)\//.test(p.source.url)){link.href=p.source.url;link.target='_blank';link.rel='noopener'}article.append(note,link);list.append(article);
+ }
+ if(!list.children.length)list.textContent='No pairs in this category.';
+}
+document.getElementById('filter').onchange=render;
+fetch('/api/pairs').then(r=>{if(!r.ok)throw Error('Server unavailable');return r.json()}).then(d=>{records=d.pairs;const accepted=records.filter(p=>p.export_eligible);const excluded=records.filter(p=>p.review_status==='excluded');const split=s=>accepted.filter(p=>p.source.split===s).length;document.getElementById('count').textContent=`${records.length} candidates / ${accepted.length} accepted / ${excluded.length} excluded / ${records.length-accepted.length-excluded.length} need review. Export: ${split('train')*3} training / ${split('validation')*3} validation / ${split('test')*3} test examples.`;render()}).catch(e=>document.getElementById('count').textContent='Could not load pairs: '+e.message);
+</script></body></html>

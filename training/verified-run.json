@@ -1,0 +1,87 @@
+{
+  "smoke": {
+    "model": {
+      "repo": "Qwen/Qwen3.5-2B",
+      "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+      "license": "apache-2.0"
+    },
+    "torch": "2.9.1+cu128",
+    "transformers": "5.20.2",
+    "peft": "0.21.2",
+    "gpu": "NVIDIA GeForce RTX 4070 SUPER",
+    "free_bytes_before": 11606687744,
+    "steps": 10,
+    "sequence_limit": 512,
+    "microbatch": 1,
+    "gradient_accumulation": 4,
+    "learning_rate": 0.0001,
+    "rank": 8,
+    "alpha": 16,
+    "data": "Four original plumbing fixtures; no archive or evaluation inputs.",
+    "losses": [
+      1.2163917645812035,
+      1.210412960499525,
+      1.1700097993016243,
+      1.1241080518811941,
+      1.075134303420782,
+      1.0209923069924116,
+      0.9736732747405767,
+      0.916953724808991,
+      0.8672645585611463,
+      0.8189478712156415
+    ],
+    "token_lengths": [
+      62,
+      65,
+      58,
+      65
+    ],
+    "target_token_counts": [
+      11,
+      14,
+      9,
+      14
+    ],
+    "target_modules": [
+      "model.language_model.layers.3.self_attn.q_proj",
+      "model.language_model.layers.3.self_attn.v_proj",
+      "model.language_model.layers.7.self_attn.q_proj",
+      "model.language_model.layers.7.self_attn.v_proj",
+      "model.language_model.layers.11.self_attn.q_proj",
+      "model.language_model.layers.11.self_attn.v_proj",
+      "model.language_model.layers.15.self_attn.q_proj",
+      "model.language_model.layers.15.self_attn.v_proj",
+      "model.language_model.layers.19.self_attn.q_proj",
+      "model.language_model.layers.19.self_attn.v_proj",
+      "model.language_model.layers.23.self_attn.q_proj",
+      "model.language_model.layers.23.self_attn.v_proj"
+    ],
+    "trainable_parameters": 417792,
+    "total_parameters": 2213659456,
+    "peak_allocated_bytes": 4652219904,
+    "peak_reserved_bytes": 5010096128,
+    "elapsed_seconds": 15.15,
+    "passed": true,
+    "meaning": "Training plumbing only; not a trained Trump-style model or quality improvement claim."
+  },
+  "verification": {
+    "adapter_reload_passed": true,
+    "sample_output": "Please return the green stapler after the workshop.\n",
+    "stress_sequence_tokens": 512,
+    "stress_loss": 1.2874505519866943,
+    "peak_allocated_bytes": 6020204544,
+    "peak_reserved_bytes": 6387924992,
+    "note": "Synthetic capacity test; no optimizer step, no archive data, no quality conclusion."
+  },
+  "download": {
+    "source": {
+      "repo": "Qwen/Qwen3.5-2B",
+      "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+      "license": "apache-2.0"
+    },
+    "file": "model.safetensors-00001-of-00001.safetensors",
+    "bytes": 4548221488,
+    "local_sha256": "aa33250c4fc64891ddfaba3a314fd9542ea371843c387178b425fbcc5ed680b1",
+    "license_retained": true
+  }
+}

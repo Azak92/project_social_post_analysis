@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Five levels, one meaning</title><link rel="stylesheet" href="/static/style.css"></head><body><main>
+<a href="/">Back to slider</a> · <a href="/training?run=v2">Second training test</a>
+<h1>Five levels, one meaning</h1><p id="description">30 reviewed content groups, 150 targets. Each group supplies both plain and strongly styled inputs at every target level. 24 groups train the model; six separate groups check validation loss. Archive allegations remain attributed claims, not verified facts.</p>
+<label for="example">Reviewed example</label><select id="example"></select><p id="source"></p><p id="review" class="note"></p><div id="targets"></div>
+<p>These levels are editorial examples, not measured percentages of authenticity. Meaning takes priority over adding rhetorical devices.</p>
+</main><script>
+const select=document.getElementById('example');let groups=[];
+function render(){const g=groups[Number(select.value)];document.getElementById('source').textContent=g.origin+' · '+g.split;document.getElementById('review').textContent='Review: '+g.review_note;const dest=document.getElementById('targets');dest.replaceChildren();for(const level of [0,25,50,75,100]){const section=document.createElement('section');section.className='panel';const h=document.createElement('h2');h.textContent=level+' / 100';const p=document.createElement('p');p.textContent=g.targets[level];section.append(h,p);dest.append(section)}}
+const run=new URLSearchParams(location.search).get('run')==='v3'?'v3':'v2';if(run==='v3')document.getElementById('description').textContent='Eight reviewed groups for the broader-adapter diagnostic. Five targets per group, with plain and styled input views. Corrections retain completed repair work and explicitly name the rejected proposal. These familiar examples test learning capacity, not generalization.';
+fetch('/api/five-levels?run='+run).then(r=>{if(!r.ok)throw Error('Could not verify dataset');return r.json()}).then(d=>{groups=d;d.forEach((g,i)=>{const o=document.createElement('option');o.value=i;o.textContent=g.input_plain.slice(0,105);select.append(o)});render()}).catch(e=>document.getElementById('review').textContent=e.message);select.onchange=render;
+</script></body></html>

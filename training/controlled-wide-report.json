@@ -1,0 +1,185 @@
+{
+  "report": {
+    "validation_loss_before": 0.9750509131219462,
+    "validation_loss_after": 1.2360658504259903,
+    "training_step_losses": [
+      0.9537838706746697,
+      0.972002673894167,
+      1.025877472013235,
+      0.9772630957886577,
+      1.258267568424344,
+      1.0707448376342654,
+      0.9144986812025309,
+      1.3265142142772675,
+      1.2750837672501802,
+      1.07095711492002,
+      0.9303543083369732,
+      0.5704811392351985,
+      0.7499722614884377,
+      0.5013127205893397,
+      1.0654254797846079,
+      0.4970898739993572,
+      0.8699603108689189,
+      0.6217095190659165,
+      0.7123577571474016,
+      0.504519565962255,
+      0.4025031039491296,
+      0.49443998001515865,
+      0.555239231325686,
+      0.27424681722186506,
+      0.484964806586504,
+      0.3248422057367861,
+      0.4479333418421447,
+      0.44932376127690077,
+      0.21213348110904917,
+      0.4852068009786308,
+      0.17891688836971298,
+      0.19606299558654428,
+      0.27686184202320874,
+      0.17659596163139213,
+      0.15135125356755452,
+      0.22367575007956475,
+      0.23020414263010025,
+      0.15162315004272386,
+      0.27274465654045343,
+      0.28566652070730925,
+      0.3136470462195575,
+      0.17634495254606009,
+      0.10300158440077212,
+      0.05270642662071623,
+      0.10013348807115108,
+      0.11615469551179558,
+      0.13012558867922053,
+      0.08315785384911578,
+      0.1401424338691868,
+      0.13187216949881986,
+      0.06266463012434542,
+      0.07942261442076415,
+      0.08742522215470672,
+      0.041493139273370616,
+      0.1447679916745983,
+      0.055057635880075395,
+      0.06757833901792765,
+      0.03812585992272943,
+      0.09505305014317855,
+      0.08647326790378429,
+      0.04148750868625939,
+      0.023825475835337784,
+      0.03231911728653358,
+      0.03553413701229147,
+      0.0784535737616352,
+      0.03348279534839094,
+      0.029680278537853155,
+      0.05445837241131812,
+      0.16863248581648804,
+      0.148022496025078,
+      0.01681338038906688,
+      0.04749398495778223,
+      0.04204284332081443,
+      0.06507687256089412,
+      0.09837287319351162,
+      0.06531274307144486,
+      0.052386077179107815,
+      0.08734438109240727,
+      0.0590202462385605,
+      0.04797822217915382
+    ],
+    "optimizer_steps": 80,
+    "trainable_parameters": 8409600,
+    "peak_reserved_bytes": 6637486080,
+    "note": "Eight fixed epochs on eight groups; training-fit cases are memorization checks, transfer probes are not training targets; validation loss is not meaning preservation or style quality. Test split untouched by optimization and evaluation.",
+    "elapsed_seconds": 646.67,
+    "complete": true
+  },
+  "diagnostics": {
+    "before": {
+      "outputs": 80,
+      "identical_at_all_five_levels": 2,
+      "insensitive_cases": [
+        "fit_108323669668481696",
+        "transfer_negation"
+      ],
+      "average_distinct_outputs_per_case": 3.4375,
+      "exact_input_copies": 23,
+      "length_limited": 5
+    },
+    "after": {
+      "outputs": 80,
+      "identical_at_all_five_levels": 0,
+      "insensitive_cases": [],
+      "average_distinct_outputs_per_case": 4.8125,
+      "exact_input_copies": 18,
+      "length_limited": 0
+    },
+    "validation_loss_relative_reduction": -0.26769364942013013,
+    "limitations": "Exact textual differences measure responsiveness, not stylistic quality. Identical output can be appropriate for some inputs. One deterministic generation per condition. Training-fit outputs are memorization diagnostics. Transfer probes are small and lack independent ratings; none establish generalization alone.",
+    "by_category": {
+      "before": {
+        "training-fit": {
+          "cases": 8,
+          "outputs": 40,
+          "identical_at_all_levels": 1,
+          "exact_input_copies": 13,
+          "length_limited": 2,
+          "exact_reviewed_target_matches": 5
+        },
+        "transfer-probe": {
+          "cases": 8,
+          "outputs": 40,
+          "identical_at_all_levels": 1,
+          "exact_input_copies": 10,
+          "length_limited": 3,
+          "exact_reviewed_target_matches": null
+        }
+      },
+      "after": {
+        "training-fit": {
+          "cases": 8,
+          "outputs": 40,
+          "identical_at_all_levels": 0,
+          "exact_input_copies": 10,
+          "length_limited": 0,
+          "exact_reviewed_target_matches": 31
+        },
+        "transfer-probe": {
+          "cases": 8,
+          "outputs": 40,
+          "identical_at_all_levels": 0,
+          "exact_input_copies": 8,
+          "length_limited": 0,
+          "exact_reviewed_target_matches": null
+        }
+      }
+    }
+  },
+  "semantic_review": {
+    "reviewer": "Assistant editorial review, unblinded; not independent human evaluation",
+    "summary": "Familiar targets are learned (31/40 exact matches), but transfer remains unreliable: 10 clear meaning/stance failures and 8 minor or ambiguous shifts in 40 fresh outputs. One clear omission also occurred in the 40 familiar outputs. Not deployed.",
+    "rubric": {
+      "2": "No material change found",
+      "1": "Minor or ambiguous semantic shift",
+      "0": "Changed or omitted claim, role, referent, attribution or stance"
+    },
+    "by_category": {
+      "training-fit": {
+        "0": 1,
+        "1": 0,
+        "2": 39
+      },
+      "transfer-probe": {
+        "0": 10,
+        "1": 8,
+        "2": 22
+      }
+    },
+    "style_findings": [
+      "Characteristic vocabulary and rhetorical structures learned on familiar inputs, beyond capitals.",
+      "Role-question structure transfers to new names and amount, but explicit payment-after-repair relation is weakened.",
+      "Political criticism uses the observed nickname at high levels; praise incorrectly receives the nickname at 100.",
+      "Uncertainty is preserved in several strong-style outputs; level 50 drops the parcel referent.",
+      "Distinct outputs at all cases do not imply five perceptually calibrated or monotonically increasing levels."
+    ],
+    "limitations": "All 80 after outputs reviewed against original inputs; before outputs only spot reviewed for meaning. No before/after semantic accuracy claim. Training-fit results reflect deliberate memorization. Eight transfer inputs with one deterministic generation each do not establish population accuracy."
+  },
+  "deployment": "Experimental only; existing archive and prompt-only slider modes remain unchanged."
+}
