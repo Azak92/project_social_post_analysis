@@ -237,3 +237,25 @@ def rewrite(body: RewriteInput):
         before=metrics(body.text), after=metrics(output), label='Synthetic style experiment',
         review_flags=fidelity_flags(body.text,output),
         elapsed_seconds=round(time.monotonic()-started,2))
+
+
+class TopicInput(BaseModel):
+    topic: str = Field(min_length=1, max_length=300)
+    model: str = Field(min_length=1, max_length=100)
+
+@app.post('/api/topic')
+def topic_post(body: TopicInput):
+    from .topic import generate
+    topic=body.topic.strip()
+    if not topic:
+        raise HTTPException(422, 'Enter a topic first.')
+    if body.model not in models()['models']:
+        raise HTTPException(503, 'Local model unavailable. Start Open Language Lab and try again.')
+    try:
+        return generate(topic, body.model, ollama)
+    except FileNotFoundError as exc:
+        raise HTTPException(503, 'Archive examples are unavailable. Restore the local archive index.') from exc
+    except ValueError as exc:
+        raise HTTPException(502, str(exc)) from exc
+    except (URLError, TimeoutError, OSError) as exc:
+        raise HTTPException(503, 'Local model unavailable or timed out. Please try again.') from exc

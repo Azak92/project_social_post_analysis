@@ -27,3 +27,6 @@ data/*
 venv/
 .venv_social_post_analysis/
 work/
+
+# Generated notebook editor files
+.virtual_documents/

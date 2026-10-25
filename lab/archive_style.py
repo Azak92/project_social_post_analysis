@@ -34,7 +34,7 @@ def corpus():
     df=Counter(w for r in rows if r['split']=='train' for w in set(tokens(r['text']))-STOP)
     return rows,df
 
-def select_examples(text, limit=3):
+def select_examples(text, limit=3, allow_political_matches=False):
     rows,df=corpus(); query=set(tokens(text))-STOP; kind=category(text)
     ranked=[]
     query_shingles=shingles(text)
@@ -43,7 +43,8 @@ def select_examples(text, limit=3):
         if len(row['text'].split())>60:continue
         words=set(tokens(row['text']))-STOP
         # Neutral topics do not receive political attack examples.
-        if kind!='politics' and row['category']=='politics': continue
+        if kind!='politics' and row['category']=='politics':
+            if not allow_political_matches or not query & words: continue
         rs=shingles(row['text'])
         if query_shingles and len(query_shingles & rs)/max(1,len(query_shingles|rs))>.65: continue
         score=sum(math.log(1+len(rows)/(1+df[w])) for w in query&words)
