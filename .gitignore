@@ -30,3 +30,6 @@ work/
 
 # Generated notebook editor files
 .virtual_documents/
+
+# Microsoft Office temporary lock files
+~$*.docx

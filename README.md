@@ -6,6 +6,8 @@ Current experiment: the broader 2B adapter has completed a controlled eight-grou
 
 ## Run locally
 
+The rewrite slider has separate prompt descriptions for 0, 25, 50, 75 and 100: plain wording, subtle conversational cadence, recognizable restrained phrasing, strong rhetorical structure, and full Trump-inspired delivery. Both generation modes use the same level descriptions. Archive mode adds retrieved examples as style evidence. Higher levels prioritize vocabulary and clause rhythm over capitals; nicknames remain optional and restricted to existing political criticism. These are prompt controls, not trained or empirically calibrated style scores, and meaning preservation still needs output review.
+
 ```powershell
 python -m pip install -r requirements-app.txt
 python -m lab.data --truth
